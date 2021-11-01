@@ -1,5 +1,5 @@
 //time and date
-var todaysDate = moment().format('dddd, MMM Do YYYY');
+var todaysDate = moment().format('dddd, MMM Do YYYY, h:mm:ss a');
 $("#currentDay").html(todaysDate);
 
 $(document).ready(function () {
@@ -14,15 +14,15 @@ localStorage.setItem(taskInput, hour);
 
 })
  
-function currentTimeTrack () {
+function currentTimeTrack() {
 
 //get current time
     var time = moment().hour();
 
     $(".time-block").each(function () {
-     var timeBlock = parseInt($(this).attr("id").split("hour")[1]);
+     var currentTime = parseInt($(this).attr("id").split("hour")[1]);
 // change color according to time
-      if (timeBlock < time) {
+      if (currentTime < time) {
 
         
         $(this).removeClass("present");
@@ -40,11 +40,12 @@ function currentTimeTrack () {
       else {
           $(this).removeClass("present");
           $(this).removeClass("past");
-          (this).addClass("future");
+          $(this).addClass("future");
       }
     })
 
 }
+//load data in local storage
 
 $("#hour9 .description").val(localStorage.getItem("hour9"));
 $("#hour10 .description").val(localStorage.getItem("hour10"));
